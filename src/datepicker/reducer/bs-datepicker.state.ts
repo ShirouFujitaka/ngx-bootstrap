@@ -31,6 +31,9 @@ export class BsDatepickerState
   minDate?: Date;
   maxDate?: Date;
 
+  // 休日の配列
+  dateDisabled?: Date[];
+
   hoveredDate?: Date;
   hoveredMonth?: Date;
   hoveredYear?: Date;

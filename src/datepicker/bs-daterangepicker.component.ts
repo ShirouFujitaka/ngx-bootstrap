@@ -89,6 +89,10 @@ export class BsDaterangepickerComponent
    */
   @Input() maxDate: Date;
   /**
+   * 休日の配列
+   */
+  @Input() dateDisabled: Date[];
+  /**
    * Emits when daterangepicker value has been changed
    */
   @Output() bsValueChange: EventEmitter<Date[]> = new EventEmitter();
@@ -134,6 +138,10 @@ export class BsDaterangepickerComponent
       this._datepickerRef.instance.maxDate = this.maxDate;
     }
 
+    if (changes.dateDisabled) {
+      this._datepickerRef.instance.dateDisabled = this.dateDisabled;
+    }
+
     if (changes.isDisabled) {
       this._datepickerRef.instance.isDisabled = this.isDisabled;
     }
@@ -157,7 +165,8 @@ export class BsDaterangepickerComponent
         value: this._bsValue,
         isDisabled: this.isDisabled,
         minDate: this.minDate || this._config.minDate,
-        maxDate: this.maxDate || this._config.maxDate
+        maxDate: this.maxDate || this._config.maxDate,
+        dateDisabled: this.dateDisabled || this._config.dateDisabled
       }
     );
 

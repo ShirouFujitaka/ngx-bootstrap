@@ -18,6 +18,9 @@ export class BsDatepickerConfig
    */
   maxDate?: Date;
 
+  /** 休日の配列 */
+  dateDisabled?: Date[];
+
   /** CSS class which will be applied to datepicker container,
    * usually used to set color theme
    */
@@ -47,4 +50,5 @@ export class BsDatepickerConfig
   monthLabel = 'MMMM';
   yearLabel = 'YYYY';
   weekNumbers = 'w';
+
 }

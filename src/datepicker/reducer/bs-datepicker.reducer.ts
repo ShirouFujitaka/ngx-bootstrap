@@ -132,6 +132,9 @@ export function bsDatepickerReducer(
         maxDate: action.payload
       });
     }
+    case BsDatepickerActions.SET_DATE_DISABLED: {
+      return Object.assign({}, state, { dateDisabled: action.payload });
+    }
     case BsDatepickerActions.SET_IS_DISABLED: {
       return Object.assign({}, state, {
         isDisabled: action.payload
@@ -271,6 +274,7 @@ function flagReducer(
           isDisabled: state.isDisabled,
           minDate: state.minDate,
           maxDate: state.maxDate,
+          dateDisabled: state.dateDisabled,
           hoveredDate: state.hoveredDate,
           selectedDate: state.selectedDate,
           selectedRange: state.selectedRange,

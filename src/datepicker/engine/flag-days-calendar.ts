@@ -12,6 +12,7 @@ export interface FlagDaysCalendarOptions {
   isDisabled: boolean;
   minDate: Date;
   maxDate: Date;
+  dateDisabled: Date[];
   hoveredDate: Date;
   selectedDate: Date;
   selectedRange: Date[];
@@ -52,6 +53,7 @@ export function flagDaysCalendar(
 
       const isDisabled =
         options.isDisabled ||
+        isContained(day.date, options.dateDisabled) ||
         isBefore(day.date, options.minDate, 'day') ||
         isAfter(day.date, options.maxDate, 'day');
 
@@ -79,6 +81,20 @@ export function flagDaysCalendar(
       }
     });
   });
+
+  function isContained(day: Date, days: Date[]) {
+
+    let result = false;
+
+    days.forEach(test => {
+      if (isSameDay(day, test)) {
+        result = true;
+        return false;
+      }
+    });
+
+    return result;
+  }
 
   // todo: add check for linked calendars
   formattedMonth.hideLeftArrow =

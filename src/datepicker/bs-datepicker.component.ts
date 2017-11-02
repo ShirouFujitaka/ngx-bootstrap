@@ -89,6 +89,10 @@ export class BsDatepickerComponent implements OnInit, OnDestroy, OnChanges {
    */
   @Input() maxDate: Date;
   /**
+   * 休日の配列
+   */
+  @Input() dateDisabled: Date[];
+  /**
    * Emits when datepicker value has been changed
    */
   @Output() bsValueChange: EventEmitter<Date> = new EventEmitter();
@@ -135,6 +139,10 @@ export class BsDatepickerComponent implements OnInit, OnDestroy, OnChanges {
       this._datepickerRef.instance.maxDate = this.maxDate;
     }
 
+    if (changes.dateDisabled) {
+      this._datepickerRef.instance.dateDisabled = this.dateDisabled;
+    }
+
     if (changes.isDisabled) {
       this._datepickerRef.instance.isDisabled = this.isDisabled;
     }
@@ -153,7 +161,8 @@ export class BsDatepickerComponent implements OnInit, OnDestroy, OnChanges {
       value: this._bsValue,
       isDisabled: this.isDisabled,
       minDate: this.minDate || this._config.minDate,
-      maxDate: this.maxDate || this._config.maxDate
+      maxDate: this.maxDate || this._config.maxDate,
+      dateDisabled: this.dateDisabled || this._config.dateDisabled
     });
 
     this._datepickerRef = this._datepicker

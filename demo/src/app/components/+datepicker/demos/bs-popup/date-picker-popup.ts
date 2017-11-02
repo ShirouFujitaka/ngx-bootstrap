@@ -8,6 +8,9 @@ export class DemoDatePickerPopupComponent {
   minDate = new Date(2017, 5, 10);
   maxDate = new Date(2018, 9, 15);
   _bsValue: Date;
+
+  dateDisabled = [new Date(2017, 10, 2), new Date('2017-11-03'), new Date('2017-11-29')];
+
   get bsValue(): Date {
     return this._bsValue;
   }
